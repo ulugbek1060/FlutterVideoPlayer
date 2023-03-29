@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:video_player_sample/widget/main_page.dart';
 import 'package:video_player_sample/widget/video_player_widget.dart';
 
 void main() => runApp(MyApp());
@@ -13,11 +14,14 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.purple,
         ),
-        home: MyHomePage(title: title),
+        home: const MainPage(),
       );
 }
 
 class MyHomePage extends StatelessWidget {
+  static Route<void> route(String title) =>
+      MaterialPageRoute(builder: (_) => MyHomePage(title: title));
+
   final String title;
 
   const MyHomePage({required this.title, Key? key}) : super(key: key);

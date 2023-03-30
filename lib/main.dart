@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:video_player_sample/app_providers/main_provider.dart';
+import 'package:video_player_sample/theme/app_theme.dart';
 import 'package:video_player_sample/widget/main_page.dart';
 import 'package:video_player_sample/widget/video_player_widget.dart';
 
@@ -8,13 +11,15 @@ class MyApp extends StatelessWidget {
   final String title = 'Video Controls';
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: title,
-        theme: ThemeData(
-          primarySwatch: Colors.purple,
+  Widget build(BuildContext context) => ChangeNotifierProvider.value(
+        value: MainProvider(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: title,
+          theme: AppTheme.lightTheme(),
+          darkTheme: AppTheme.darkTheme(),
+          home: const MainPage(),
         ),
-        home: const MainPage(),
       );
 }
 
